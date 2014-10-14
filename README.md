@@ -19,7 +19,7 @@ Options
 Router = require('famous-router');
 var router = new Router({
   routes: {
-     id: /some/url/with/:paramA/:paramB
+     id: '/some/url/with/:paramA/:paramB'
   },
   force: true, // force homepage on initialization, optional
   home: 'id' // homepage, optional
@@ -27,11 +27,14 @@ var router = new Router({
 ```
 
 Public API:
-```
-router.set(href,opts); // where 'opts' can be {silent:true,location:true}
+```javascript
+router.set(href,opts); // where 'opts' can be {silent:true,location:false}
 router.back() 
 router.add(route,id)  // add new route
 ```
+
+* silent: if true, don't emit events (default false)
+* location: if false, don't update hash (default true)
 
 Event output (emitted):
 ```javascript
