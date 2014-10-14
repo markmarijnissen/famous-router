@@ -1,0 +1,22 @@
+{
+  "name": "famous-router",
+  "main": "index.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/markmarijnissen/famous-router",
+  "authors": [
+    "Mark Marijnissen <markmarijnissen@gmail.com>"
+  ],
+  "description": "Simple hash-based router for Famo.us",
+  "keywords": [
+    "famous",
+    "router"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

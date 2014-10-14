@@ -1,0 +1,23 @@
+{
+  "name": "famous-router",
+  "version": "0.1.0",
+  "description": "Simple hash-based router for Famo.us",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/markmarijnissen/famous-router.git"
+  },
+  "keywords": [
+    "famous",
+    "router"
+  ],
+  "author": "Mark Marijnissen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/markmarijnissen/famous-router/issues"
+  },
+  "homepage": "https://github.com/markmarijnissen/famous-router"
+}
