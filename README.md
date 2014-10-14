@@ -1,0 +1,57 @@
+famous-router
+===============
+
+A simple hash-based router for Famo.us
+
+## Getting started
+
+Install using bower or npm
+
+```bash
+  bower install famous-router
+  npm install famous-router
+```
+
+## Usage
+
+Options
+```javascript
+Router = require('famous-router');
+var router = new Router({
+  routes: {
+     id: /some/url/with/:paramA/:paramB
+  },
+  force: true, // force homepage on initialization, optional
+  home: 'id' // homepage, optional
+});
+```
+
+Public API:
+```
+router.set(href,opts); // where 'opts' can be {silent:true,location:true}
+router.back() 
+router.add(route,id)  // add new route
+```
+
+Event output (emitted):
+```javascript
+router.on('change',function({ location, params, id }); // where params is {paramA: value} if location is /ex/:paramA
+
+Engine.on('route:xxx',function({ ...})); // where 'xxx' is an route.id
+```
+
+Event input (triggers):
+```javascript
+router.trigger('home') // goto homepage
+```
+
+## Contribute
+
+Feel free to contribute to this project in any way. The easiest way to support this project is by giving it a star.
+
+## Contact
+-   @markmarijnissen
+-   http://www.madebymark.nl
+-   info@madebymark.nl
+
+© 2014 - Mark Marijnissen
