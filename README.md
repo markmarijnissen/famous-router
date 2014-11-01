@@ -19,7 +19,7 @@ Options
 Router = require('famous-router');
 var router = new Router({
   routes: {
-     id: '/some/url/with/:paramA/:paramB'
+     id: /some/url/with/:paramA/:paramB
   },
   force: true, // force homepage on initialization, optional
   home: 'id' // homepage, optional
@@ -27,14 +27,14 @@ var router = new Router({
 ```
 
 Public API:
-```javascript
-router.set(href,opts); // where 'opts' can be {silent:true,location:false}
+```
+router.set(href,opts); // where 'opts' can be {silent:true,location:true}
 router.back() 
 router.add(route,id)  // add new route
 ```
 
-* silent: if true, don't emit events (default false)
-* location: if false, don't update hash (default true)
+* silent=true: don't fire change event
+* location=false: don't update location bar
 
 Event output (emitted):
 ```javascript
@@ -43,10 +43,21 @@ router.on('change',function({ location, params, id }); // where params is {param
 Engine.on('route:xxx',function({ ...})); // where 'xxx' is an route.id
 ```
 
-Event input (triggers):
-```javascript
-router.trigger('home') // goto homepage
+When route is not registred, router will fire an event with:
+
+```json
+{
+  id: 'not_found',
+  params: {}
+}
 ```
+
+## Changelog
+
+### 0.1.1 - (1/11/2014)
+
+* Fixed minor bug: Router didn't emit event if you did: `/a -> /b({location:false}) -> /a`
+* Changed unknown route id to `not_found` rather than 0.
 
 ## Contribute
 

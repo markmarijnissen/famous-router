@@ -1,6 +1,6 @@
 {
   "name": "famous-router",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Simple hash-based router for Famo.us",
   "main": "index.js",
   "scripts": {
@@ -14,10 +14,18 @@
     "famous",
     "router"
   ],
-  "author": "Mark Marijnissen",
+  "author": {
+    "name": "Mark Marijnissen"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/markmarijnissen/famous-router/issues"
   },
-  "homepage": "https://github.com/markmarijnissen/famous-router"
+  "homepage": "https://github.com/markmarijnissen/famous-router",
+  "readme": "famous-router\n===============\n\nA simple hash-based router for Famo.us\n\n## Getting started\n\nInstall using bower or npm\n\n```bash\n  bower install famous-router\n  npm install famous-router\n```\n\n## Usage\n\nOptions\n```javascript\nRouter = require('famous-router');\nvar router = new Router({\n  routes: {\n     id: /some/url/with/:paramA/:paramB\n  },\n  force: true, // force homepage on initialization, optional\n  home: 'id' // homepage, optional\n});\n```\n\nPublic API:\n```\nrouter.set(href,opts); // where 'opts' can be {silent:true,location:true}\nrouter.back() \nrouter.add(route,id)  // add new route\n```\n\nEvent output (emitted):\n```javascript\nrouter.on('change',function({ location, params, id }); // where params is {paramA: value} if location is /ex/:paramA\n\nEngine.on('route:xxx',function({ ...})); // where 'xxx' is an route.id\n```\n\nEvent input (triggers):\n```javascript\nrouter.trigger('home') // goto homepage\n```\n\n## Contribute\n\nFeel free to contribute to this project in any way. The easiest way to support this project is by giving it a star.\n\n## Contact\n-   @markmarijnissen\n-   http://www.madebymark.nl\n-   info@madebymark.nl\n\n© 2014 - Mark Marijnissen",
+  "readmeFilename": "README.md",
+  "gitHead": "e67a80cfebc3a80db9b3bf6936627838717c693d",
+  "_id": "famous-router@0.1.0",
+  "_shasum": "bcb08228cae1d0dda294d143da1acb62773aa584",
+  "_from": "famous-router@"
 }

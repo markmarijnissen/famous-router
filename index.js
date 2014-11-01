@@ -13,7 +13,7 @@ define(function(require, exports, module) {
    *
    * public api:
    *
-   * - set(href,opts); where 'opts' can be {silent:true,location:true}
+   * - set(href,opts); where 'opts' can be {silent:true,location:false}
    * - back()
    * - add(route,id)  (add new route)
    * 
@@ -21,9 +21,6 @@ define(function(require, exports, module) {
    *
    * - change ({ location, params, id }); where params is {paramA: value} if location is /ex/:paramA
    *
-   * event input (triggers):
-   *
-   * - home
    * 
    */
   function Router(options) {
@@ -66,7 +63,6 @@ define(function(require, exports, module) {
           this.set(dest);
         }.bind(this),0);
       }
-      this.on('home',this.set.bind(this,options.home));
   }
 
   Router.prototype = Object.create(Module.prototype);
@@ -106,9 +102,10 @@ define(function(require, exports, module) {
    * @param {string} location hash (without #)
    */
   Router.prototype.set = function(location,opts) {
-    if(this.location != location) {
+    console.log(this.location,location);
+    if(this.location !== location) {
       if(opts && opts.silent) this.silent = true;
-      if(opts && opts.location === false) {
+      if((opts && opts.location === false) || (window.location.hash.substr(1) === location)) {
         _handleChange.call(this,location);
       } else {
         window.location.hash = location;
@@ -125,7 +122,7 @@ define(function(require, exports, module) {
     this.stack.push(this.location);
 
     this.params = {};
-    this.locationId = 0;
+    this.locationId = 'not_found';
     
     while(i >= 0 && !found) {
       matches = this.location.match(this._routes[i].regex);
@@ -153,4 +150,4 @@ define(function(require, exports, module) {
   }
 
   module.exports = Router;
-})
+});
